@@ -1,0 +1,7 @@
+<launch>
+  <!-- Start the move_and_turn node -->
+  <node name="move_and_turn_node" pkg="move_and_turn" type="move_and_turn.py" output="screen"/>
+
+  <!-- Start the move_and_turn test -->
+  <test test-name="move_and_turn_test" pkg="move_and_turn" type="test_start_move_and_turn.py"/>
+</launch>
