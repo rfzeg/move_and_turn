@@ -41,7 +41,7 @@ def start_move_and_turn_callback(req):
 
 
 rospy.init_node('move_and_turn_node', anonymous=False)
-rospy.loginfo("Started move_and_turn node")
+rospy.loginfo("Started '/start_move_and_turn' service")
 pub_cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 move_distance = 0.5  # distance in meters to move straight
 turn_angle = 90.0  # angle in degrees to turn
