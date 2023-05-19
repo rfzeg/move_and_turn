@@ -32,11 +32,10 @@ COPY ./ /catkin_ws/src/move_and_turn
 
 # build
 WORKDIR /catkin_ws
+RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make"
 
-#  Source environments
-RUN echo "source /opt/ros/noetic/setup.bash" >> /root/.bashrc && \
-    echo "source /catkin_ws/devel/setup.bash" >> /root/.bashrc && \
-    echo "export TURTLEBOT3_MODEL=waffle" >> /root/.bashrc
+# replace setup.bash in ros_entrypoint.sh
+RUN sed -i 's|source "/opt/ros/\$ROS_DISTRO/setup.bash"|source "/catkin_ws/devel/setup.bash"|g' /ros_entrypoint.sh
 
 # Set up the Network Configuration
 # Example with the ROS_MASTER_URI value set as the one running on the Host System
